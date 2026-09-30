@@ -1,0 +1,47 @@
+name: Generate Chart Race Video
+
+on:
+  workflow_dispatch:
+    inputs:
+      render_mode:
+        description: 'Choose Format (LONG: 16:9, ~3.5m | SHORT: 9:16, <60s)'
+        required: true
+        default: 'LONG'
+        type: choice
+        options:
+          - LONG
+          - SHORT
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install FFmpeg
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+
+      - name: Install Python Packages
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run Video Generation
+        env:
+          RENDER_MODE: ${{ github.event.inputs.render_mode }}
+        run: |
+          python generate_race.py
+
+      - name: Upload Video File
+        uses: actions/upload-artifact@v4
+        with:
+          name: generated-${{ github.event.inputs.render_mode }}-video
+          path: output_*.mp4
+          retention-days: 7
