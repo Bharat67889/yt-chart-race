@@ -79,20 +79,25 @@ for _ in timeline:
 df = pd.DataFrame(data_matrix, index=timeline, columns=entities)
 df.index.name = 'Date'
 
-# 4. Matplotlib Setup & Render
+# 4. Matplotlib Setup
 plt.rcParams['font.family'] = chosen_font
 plt.rcParams['text.color'] = '#ffffff'
 plt.rcParams['axes.labelcolor'] = '#ffffff'
 plt.rcParams['xtick.color'] = '#ffffff'
 plt.rcParams['ytick.color'] = '#ffffff'
 
+fig, ax = plt.subplots(figsize=FIGSIZE, dpi=DPI)
+fig.set_facecolor(chosen_bg)
+ax.set_facecolor(chosen_bg)
+
+# 5. Render Video (fig pass kiya hai direct)
 bcr.bar_chart_race(
     df=df,
     filename=OUTPUT_FILE,
+    fig=fig,
     n_bars=N_BARS,
     steps_per_period=STEPS_PER_PERIOD,
     period_length=PERIOD_LENGTH,
-    fig_kwargs={'figsize': FIGSIZE, 'dpi': DPI, 'facecolor': chosen_bg},
     title={
         'label': f"{active_topic['topic']}\n", 
         'color': '#ffffff', 
