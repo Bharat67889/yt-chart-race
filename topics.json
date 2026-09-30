@@ -1,0 +1,24 @@
+[
+  {
+    "id": 1,
+    "topic": "Fastest Supercars in the World (Top Speed km/h)",
+    "category": "cars",
+    "years": [2020, 2021, 2022, 2023, 2024, 2025, 2026],
+    "entities": [
+      "Bugatti Chiron SS", "Koenigsegg Jesko", "Hennessey Venom F5", 
+      "Rimac Nevera", "SSC Tuatara", "McLaren Speedtail", 
+      "Aston Martin Valkyrie", "Pagani Huayra R", "Porsche 911 GT3", "Ferrari SF90"
+    ]
+  },
+  {
+    "id": 2,
+    "topic": "Most Followed Instagram Creators (Millions)",
+    "category": "social",
+    "years": [2020, 2021, 2022, 2023, 2024, 2025, 2026],
+    "entities": [
+      "Cristiano Ronaldo", "Lionel Messi", "Selena Gomez", 
+      "Kylie Jenner", "Dwayne Johnson", "Ariana Grande", 
+      "Kim Kardashian", "Beyonce", "Khloe Kardashian", "Justin Bieber"
+    ]
+  }
+]
